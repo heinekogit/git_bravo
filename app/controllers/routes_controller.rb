@@ -16,8 +16,22 @@ class RoutesController < ApplicationController
     
     def show
         @nickname = current_user.nickname
-        # @user = User.params(:id)
-        
+    end
+    
+    def edit
+        @route = Route.find(params[:id])
+    end
+    
+    def update
+        route = Route.find(params[:id])
+        route.update(routes_params)
+        redirect_to action: :index
+    end
+    
+    def destroy
+        route = Route.find(params[:id])
+        route.destroy
+        redirect_to action: :index
     end
 
     private

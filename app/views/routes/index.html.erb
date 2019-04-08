@@ -1,13 +1,23 @@
-<p></p><%= "トップページ" %><p>
+<div class="site">
+    <h1><a href="#">blavo</a></h1>
+<p><%= "トップページ" %><p>
+</div>
+
+
+<div class="kiji">
 <hr>
 <% @routes.each do |route| %>
-    <p>タイトル：<%= route.title %></p>
+    <h1>タイトル：<%= route.title %></h1>
+    
     <p>場　　所：<%= route.place %></p>
     <p>詳　　細：<%= route.detail %></p>
     <p>距　　離：<%= route.distance %>km</p>
     <p>nickname：<%= route.user.nickname %></p>
     <hr>
 <% end %>
+</div>
+
+
 
 <%= paginate @routes %>
 <hr>

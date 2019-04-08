@@ -1,0 +1,11 @@
+<%= form_for(@user) do |f| %>
+    <div class="field" %>
+        <p><%= f.label :nickname %></p>
+        <p><%= f.text_field :nickname %></p>
+        <p><%= f.label :image %></p>
+        <p><%= f.file_field :image %></p>
+    </div>
+    <div class="actions" %>
+       <%= f.submit "修正する" %> 
+    </div>
+<% end %>

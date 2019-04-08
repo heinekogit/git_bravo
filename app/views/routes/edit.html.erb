@@ -1,0 +1,13 @@
+<%= form_for(@route, :url => {:action => 'update'}) do |f| %>
+    <div class="field">
+        <p><%= f.label :title%></p>
+        <p><%= f.text_field :title, size: "60x12" %></p>
+        <p><%= f.label :place %></p>
+        <p><%= f.text_field :place, size: "60x12" %></p>
+        <p><%= f.label :detail %></p>
+        <p><%= f.text_field :detail, size: "60x100"  %></p>
+        <p><%= f.label :distance %></p>
+        <p><%= f.text_field :distance %></p>
+    </div>
+<%= f.submit "書き込む" %>
+<% end %>
