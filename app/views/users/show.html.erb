@@ -1,0 +1,16 @@
+＜　<%= @nickname %>　のページ＞
+<p><%= image_tag current_user.image %></p>
+
+<hr>
+<% @routes.each do |route| %>
+    <p>タイトル：<%= route.title %></p>
+    <p>場　　所：<%= route.place %></p>
+    <p>詳　　細：<%= route.detail %></p>
+    <p>距　　離：<%= route.distance %>km</p>
+    <p>nickname：<%= route.user.nickname %></p>
+    <hr>
+<% end %>
+
+
+
+    <p><%= link_to "トップページ", root_path %></p>

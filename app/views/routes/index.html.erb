@@ -1,0 +1,29 @@
+<p></p><%= "トップページ" %><p>
+<hr>
+<% @routes.each do |route| %>
+    <p>タイトル：<%= route.title %></p>
+    <p>場　　所：<%= route.place %></p>
+    <p>詳　　細：<%= route.detail %></p>
+    <p>距　　離：<%= route.distance %>km</p>
+    <p>nickname：<%= route.user.nickname %></p>
+    <hr>
+<% end %>
+
+<%= paginate @routes %>
+<hr>
+
+<% if user_signed_in? %>
+    <p><%= link_to "書き込む", new_route_path %></p>
+    <P><a href="/users/<%= current_user.id %>">マイページ</a></P>
+    <p><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></p>
+<% else %>
+    <P>書き込む</P>
+    <P>マイページ</P>
+    <p><%= link_to "サインイン", new_user_session_path %></p>
+<% end %>
+
+
+
+
+
+
