@@ -1,10 +1,35 @@
-<div class="site">
+<div class="box1">
     <h1><a href="#">blavo</a></h1>
-<p><%= "トップページ" %><p>
+<p><%= "＜トップページ＞" %><p>
 </div>
 
 
-<div class="kiji">
+
+<div class="box2">
+    <nav class="menu">
+        <ul>
+<% if user_signed_in? %>
+    <li><%= link_to "書き込む", new_route_path %></li>
+    <li><a href="/users/<%= current_user.id %>">マイページ</a></li>
+    <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></li>
+<% else %>
+    <li>書き込む</li>
+    <li>マイページ</li>
+    <li><%= link_to "サインイン", new_user_session_path %></li>
+<% end %>
+
+</ul>
+</nav>
+</div>
+
+
+
+
+<div class="A">
+    <div class="box3">
+
+<article class="kiji">
+
 <hr>
 <% @routes.each do |route| %>
     <h1>タイトル：<%= route.title %></h1>
@@ -15,23 +40,35 @@
     <p>nickname：<%= route.user.nickname %></p>
     <hr>
 <% end %>
+
+</article>
+    </div>
+
+
+
+    <div class="box4">
+        
+	<aside class="sidemenu">
+	<h1>特集記事</h1>
+	<ul>
+	<li><a href="#">わかりやすい地図の読み方</a></li>
+	<li><a href="#">苗から始めるトマト作り</a></li>
+	<li><a href="#">料理とスマホの便利な関係</a></li>
+	<li><a href="#">バッテリーを長持ちさせる技</a></li>
+	</ul>
+	</aside>
+        
+    </div>
 </div>
 
 
 
-<%= paginate @routes %>
-<hr>
 
-<% if user_signed_in? %>
-    <p><%= link_to "書き込む", new_route_path %></p>
-    <P><a href="/users/<%= current_user.id %>">マイページ</a></P>
-    <p><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></p>
-<% else %>
-    <P>書き込む</P>
-    <P>マイページ</P>
-    <p><%= link_to "サインイン", new_user_session_path %></p>
-<% end %>
+<div class="box5">
 
+    <%= paginate @routes %>
+
+</div>
 
 
 

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
     def show
         @nickname = current_user.nickname
-        @routes = Route.where(user_id: current_user.id).order('updated_at DESC')
+        @routes = Route.where(user_id: current_user.id).order('updated_at DESC').page(params[:page]).per(5)
     end
     
     def edit
