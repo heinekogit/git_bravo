@@ -6,7 +6,12 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-
+amazon:
+    service: S3
+    access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>     # ①
+    secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>  #  ②
+    region: ap-northeast-1   # ③　東京リージョン
+    bucket: forapps   # ④　（例）バケットの名称を変更
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
@@ -16,12 +21,6 @@ local:
 #   region: us-east-1
 #   bucket: your_own_bucket
 
-  amazon:
-    service: S3
-    access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>     # ①
-    secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>  #  ②
-    region: ap-northeast-1   # ③　東京リージョン
-    bucket: forapps   # ④　（例）バケットの名称を変更
 
 
 
