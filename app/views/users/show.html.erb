@@ -1,5 +1,5 @@
 <div class="box1">
-    <h1><a href="index.html">blavo</a></h1>
+    <h1><a href="/">bravo</a></h1>
 <p>＜　<%= @nickname %>　のページ＞<p>
 </div>
 
@@ -21,17 +21,11 @@
 </nav>
 </div>
 
-<!-----　ココにimage_tagを入れていた　--->
-
-
-    <p><%= link_to "プロフィール修正", "/users/#{current_user.id}/edit" %></p>
-
-
 
 
 <div class="A">
     <div class="box3">
-
+        
 <article class="kiji">
 
 <hr>
@@ -42,6 +36,7 @@
     <p>距　　離：<%= route.distance %>km</p>
     <p>nickname：<%= route.user.nickname %></p>
     <p><%= link_to "編集", "/routes/#{route.id}/edit" %>　／　<%= link_to "削除", "/routes/#{route.id}", method: :delete  %></p>
+    <p><%= link_to "写真／コメントを書く",  "/routes/#{route.id}/images/new" %></p>
     <hr>
 <% end %>
 
@@ -51,6 +46,18 @@
 
 
     <div class="box4">
+
+	<div class="profile">
+
+<% if current_user.image == nil %>
+    <% else %>
+        <p>ー　プロフィール画像をUPしてください　ー</p>
+<% end %>
+
+ <p><%= link_to "プロフィール修正", "/users/#{current_user.id}/edit" %></p>
+
+	</div>
+
         
 	<aside class="sidemenu">
 	<h1>特集記事</h1>

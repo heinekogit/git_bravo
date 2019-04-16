@@ -13,12 +13,12 @@ class UsersController < ApplicationController
     def update
         user = User.find(current_user.id)
         user.update(user_params)
-        redirect_to action: :index
+        redirect_to :root
     end
     
     private
     def user_params
-       params.require(:user).permit(:nickname, :image) 
+       params.require(:user).permit(:nickname, :image)
     end
     
 end

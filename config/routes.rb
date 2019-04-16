@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
     root 'routes#index'
     
-    resources :routes
+    resources :routes do
+      resources :images
+    end
+    
     resources :users
 
 end

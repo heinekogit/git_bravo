@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Google Maps API v3</title>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBs5SzjnpO0CBnZkjT3wlODSiF2_VqgjN4"></script>
+
+
+    <script type="text/javascript">
+    function getMyPlace() {
+      var output = document.getElementById("result");
+      if (!navigator.geolocation){//Geolocation apiがサポートされていない場合
+        output.innerHTML = "<p>Geolocationはあなたのブラウザーでサポートされておりません</p>";
+        return;
+      }
+      function success(position) {
+        var latitude  = position.coords.latitude;//緯度
+        var longitude = position.coords.longitude;//経度
+        output.innerHTML = '<p>緯度 ' + latitude + '° <br>経度 ' + longitude + '°</p>';
+        // 位置情報
+        var latlng = new google.maps.LatLng( latitude , longitude ) ;
+        // Google Mapsに書き出し
+        var map = new google.maps.Map( document.getElementById( "map" ) , {
+            zoom: 15 ,// ズーム値
+            center: latlng ,// 中心座標
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        } ) ;
+        // マーカーの新規出力
+        new google.maps.Marker( {
+            map: map ,
+            position: latlng ,
+        } ) ;
+      };
+      function error() {
+        //エラーの場合
+        output.innerHTML = "座標位置を取得できません";
+      };
+      navigator.geolocation.getCurrentPosition(success, error);//成功と失敗を判断
+    }
+    </script>
+
+
+    <style type="text/css">
+      html, body, #result, #map {
+        width: 60%;
+        height: 60%;
+      }
+    </style>
+  </head>
+  <body>
+
+
+
+    <div id="result">ruto</div>
+    <div id="map">map</div>
+    <div class="result">ruto</div>
+    <div class="map">puru</div>
+  </body>
+</html>

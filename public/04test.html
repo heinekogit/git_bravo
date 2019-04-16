@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Google Maps API v3</title>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBs5SzjnpO0CBnZkjT3wlODSiF2_VqgjN4"></script>
+
+
+    <script type="text/javascript">
+    function(){
+      var option = {
+      	'enableHighAccuracy': true, // より精度の高い位置情報を取得するか
+      	'timeout': 10000, // 取得タイムアウトまでの時間（ミリ秒）
+      	'maximumAge': 0 // 位置情報の有効期限（ミリ秒）
+      };
+
+      $('#location').on('click', function(){
+        if(navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(
+            success, // 成功したた際の処理
+            error, // 失敗した際の処理
+            option // オプション
+          );
+        }
+        else{
+          alert('Geolocation APIに対応していません');
+        }
+      });
+
+      function success(position){
+        // Geolocation APIで取得した緯度、経度をもとにGoogle Maps APIで地図を表示
+
+        var latlng = new google.maps.LatLng(
+          position.coords.latitude, // 緯度
+          position.coords.longitude // 経度
+        );
+
+        var options = {
+          zoom: 15,
+          center: latlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map($('#map')[0], options);
+
+        var marker = new google.maps.Marker({
+          position: latlng,
+          map: map,
+          title: '現在地'
+        });
+      }
+
+      function error(error){
+      	// エラーコードのメッセージを定義
+      	var errorMessage = {
+      		0: '原因不明のエラーが発生しました',
+      		1: '位置情報の取得が許可されませんでした',
+      		2: '電波状況などで位置情報が取得できませんでした',
+      		3: '位置情報の取得に時間がかかり過ぎてタイムアウトしました'
+      	};
+
+      	// エラーコードに合わせたエラー内容をアラート表示
+      	alert(errorMessage[error.code]);
+      }
+    });
+    </script>
+
+
+    <style type="text/css">
+    #map{
+width: 500px;
+height: 300px;
+}
+      }
+    </style>
+  </head>
+  <body>
+
+
+
+    <input type="button" value="位置情報取得" id="location">
+    <div id="map"></div>
+  </body>
+</html>

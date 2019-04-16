@@ -1,1 +1,90 @@
-<p>しょー</p>
+<div class="box1">
+    <h1><a href="/">bravo</a></h1>
+<p>＜　ルート：　<%= @route.title %>　のページ＞<p>
+</div>
+
+
+<div class="box2">
+    <nav class="menu">
+        <ul>
+<% if user_signed_in? %>
+    <li><%= link_to "書き込む", new_route_path %></li>
+    <li><%= link_to "トップページ", root_path %></li>
+    <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></li>
+<% else %>
+    <li>書き込む</li>
+    <li><%= link_to "トップページ", root_path %></li>
+    <li><%= link_to "サインイン", new_user_session_path %></li>
+<% end %>
+
+</ul>
+</nav>
+</div>
+
+
+
+<div class="A">
+    <div class="box3">
+        
+<article class="kiji">
+
+<hr>
+    <p>タイトル：<%= @route.title %></p>
+    <p>場　　所：<%= @route.place %></p>
+    <p>詳　　細：<%= @route.detail %></p>
+    <p>距　　離：<%= @route.distance %>km</p>
+    <p>nickname：<%= @route.user.nickname %></p>
+<hr>
+
+<% @images.each do |im| %>
+
+    <% if im.filename == nil? %>
+        <p>画　　像：なし</p>
+    <% else %>
+        <p>画　　像：<%= image_tag im.filename %></p>
+    <% end %>
+    
+    <p>コメント：<%= im.comment %></p>
+
+<% end %>
+
+<hr>
+
+</article>
+    </div>
+
+
+
+    <div class="box4">
+
+	<div class="profile">
+
+        <p>ー　プロフィール画像を表示すること　ー</p>
+
+
+
+	</div>
+
+        
+	<aside class="sidemenu">
+	<h1>特集記事</h1>
+	<ul>
+	<li><a href="#">わかりやすい地図の読み方</a></li>
+	<li><a href="#">苗から始めるトマト作り</a></li>
+	<li><a href="#">料理とスマホの便利な関係</a></li>
+	<li><a href="#">バッテリーを長持ちさせる技</a></li>
+	</ul>
+	</aside>
+        
+    </div>
+</div>
+
+
+
+    
+    
+<div class="box5">
+
+
+</div>
+

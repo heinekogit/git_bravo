@@ -15,7 +15,12 @@ class RoutesController < ApplicationController
     end
     
     def show
-        @nickname = current_user.nickname
+        # @nickname = current_user.nickname
+        @route = Route.find(params[:id])
+
+        @images = Image.where(route_id: @route.id)
+        
+        # @routes = Route.where(user_id: current_user.id)
     end
     
     def edit
@@ -36,7 +41,7 @@ class RoutesController < ApplicationController
 
     private
     def routes_params
-        params.require(:route).permit(:title, :place, :detail, :distance).merge(user_id: current_user.id)
+        params.require(:route).permit(:title, :place, :detail, :distance).merge(user_id: current_user.id, id: route_id)
     
     end
     

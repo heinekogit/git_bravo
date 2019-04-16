@@ -1,5 +1,5 @@
 <div class="box1">
-    <h1><a href="#">blavo</a></h1>
+    <h1><a href="#">bravo</a></h1>
 <p><%= "＜トップページ＞" %><p>
 </div>
 
@@ -38,6 +38,7 @@
     <p>詳　　細：<%= route.detail %></p>
     <p>距　　離：<%= route.distance %>km</p>
     <p>nickname：<%= route.user.nickname %></p>
+    <p><%= link_to "ルート詳細を見る", "/routes/#{route.id}" %></p>
     <hr>
 <% end %>
 
