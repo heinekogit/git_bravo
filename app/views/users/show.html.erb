@@ -1,3 +1,6 @@
+<% provide :title, " | マイページ" %>
+
+
 <div class="box1">
     <h1><a href="/">bravo</a></h1>
 <p>＜　<%= @nickname %>　のページ＞<p>
@@ -45,16 +48,16 @@
 
 
 
-    <div class="box4">
+<div class="box4">
 
 	<div class="profile">
 
-<% if current_user.image == nil %>
-    <% else %>
-        <p>ー　プロフィール画像をUPしてください　ー</p>
-<% end %>
+        <% if current_user.image == nil %>
+        <% else %>
+            <p>ー　プロフィール画像をUPしてください　ー</p>
+        <% end %>
 
- <p><%= link_to "プロフィール修正", "/users/#{current_user.id}/edit" %></p>
+         <p><%= link_to "プロフィール修正", "/users/#{current_user.id}/edit" %></p>
 
 	</div>
 
@@ -73,6 +76,13 @@
 </div>
 
 
+
+
+<div>
+    
+
+    
+</div>
 
     
     

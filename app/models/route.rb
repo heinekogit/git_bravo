@@ -4,4 +4,8 @@ class Route < ApplicationRecord
     
     has_many :images
     
+    def self.search(search)
+      return Route.all unless search
+      Route.where(['title LIKE ?', "%#{search}%"])
+    end    
 end

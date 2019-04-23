@@ -1,3 +1,6 @@
+<% provide :title, " | トップページ" %>
+
+
 <div class="box1">
     <h1><a href="#">bravo</a></h1>
 <p><%= "＜トップページ＞" %><p>
@@ -49,6 +52,15 @@
 
     <div class="box4">
         
+
+<div>
+    <%= form_tag(search_routes_path, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag '検索', :name => nil %>
+    <% end %>
+</div>
+
+        
 	<aside class="sidemenu">
 	<h1>特集記事</h1>
 	<ul>
@@ -70,7 +82,6 @@
     <%= paginate @routes %>
 
 </div>
-
 
 
 

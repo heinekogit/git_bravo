@@ -1,0 +1,24 @@
+<p><%= link_to "トップページ", root_path %></p>
+
+
+<p>検索</p>
+<%= form_tag(search_routes_path, :method => 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag '検索する', :name => nil %>
+<% end %>
+
+
+<p>［　<%= params[:search] %>　］の検索結果 ： </p>
+<hr>
+
+<% unless @search_result.nil? %>
+    <% @search_result.each do |sl| %>
+      <p>タイトル：　<%= sl.title %></p>
+      <p>詳　　細：　<%= sl.detail %></p>
+      <p><%= link_to "ルート詳細を見る", "/routes/#{sl.id}" %></p>
+      <hr>
+    <% end %>
+<% else %>
+    <p> ありません。</p>
+<% end %>
+
