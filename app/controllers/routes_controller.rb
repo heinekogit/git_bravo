@@ -34,7 +34,7 @@ class RoutesController < ApplicationController
     def destroy
         route = Route.find(params[:id])
         route.destroy
-        redirect_to action: :index
+        redirect_to action: :index, notice: "通知メッセージ"
     end
     
     def search
@@ -46,7 +46,8 @@ class RoutesController < ApplicationController
 
     private
     def routes_params
-        params.require(:route).permit(:title, :place, :detail, :distance).merge(user_id: current_user.id, id: route_id)
+        params.require(:route).permit(:title, :place, :detail, :distance).merge(user_id: current_user.id)
+        # params.require(:route).permit(:title, :place, :detail, :distance).merge(user_id: current_user.id, id: route_id)
     
     end
     

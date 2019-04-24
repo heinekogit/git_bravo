@@ -38,8 +38,9 @@
     <p>詳　　細：<%= route.detail %></p>
     <p>距　　離：<%= route.distance %>km</p>
     <p>nickname：<%= route.user.nickname %></p>
-    <p><%= link_to "編集", "/routes/#{route.id}/edit" %>　／　<%= link_to "削除", "/routes/#{route.id}", method: :delete  %></p>
+    <p><%= link_to "編集", "/routes/#{route.id}/edit" %>　／　<%= link_to "削除", "/routes/#{route.id}", method: :delete, data: { confirm: '削除しますか？' }  %></p>
     <p><%= link_to "写真／コメントを書く",  "/routes/#{route.id}/images/new" %></p>
+    
     <hr>
 <% end %>
 
