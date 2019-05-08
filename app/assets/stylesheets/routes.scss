@@ -1,7 +1,13 @@
-// Place all the styles related to the routes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+//	box1がタイトル
+//	box2がメニューバー
+//	box3がコンテンツ
+//	box4がサイドバー
+//	box5が底
+//	
+//	
 
+
+// 入れ子の構造的記述　----------------------------------------------------
 
 @media (min-width: 768px) {
     .boxA:after { 
@@ -20,30 +26,39 @@
     }
 }    
 
+// boxのデザイン　----------------------------------------------------
+
+    .box1 {
+        padding-left: 10px;
+	}
     .box2 {
         background-color: #7cbac1
     }
-    .box5 {
-        border-top: solid 1px #dddddd;
-        float: left;
-        width: 100%;
-        background-color: #7cbac1
-    }
     .box3 {
+        padding-left: 20px;
         padding-right: 50px;
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         box-sizing: border-box
     }
+	.box5 {
+		border-top: solid 1px #dddddd;
+		float: left;
+		width: 100%;
+		background-color: #7cbac1
+        }
 
+
+
+// デザイン　----------------------------------------------------
 
 
     .profile {
         background-color: #ffffff
-
     }
 
 
+// デザイン　----------------------------------------------------
 
 .box1 h1 a {
     color: #000000;
@@ -118,5 +133,41 @@
     color: #666666;
     font-size: 18px
 }
+
+
+// 未分類　----------------------------------------------------
+.search_box {
+    padding: 10px;
+	background-color: #ffffff
+	}
+
+
+// 未定義　----------------------------------------------------
+
+// フォーム用　-------------------
+.cp_iptxt {
+	position: relative;
+	width: 80%;
+	margin: 40px 3%;
+}
+.cp_iptxt input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+}
+.ef input[type='text']:focus {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+}
+
+
+
 
 

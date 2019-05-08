@@ -1,14 +1,46 @@
-<p><%= link_to "トップページ", root_path %></p>
+<!-- -------------------------　タイトルバー表示　------------------------- -->
+<% provide :title, " | 検索" %>
+
+<!-- -------------------------　タイトル　------------------------- -->
+<div class="box1">
+    <h1><a href="/">bravo</a></h1>
+<p><%= "＜検索＞" %><p>
+</div>
+
+<!-- -------------------------　ナビゲーションバー　------------------------- -->
+
+<div class="box2">
+    <nav class="menu">
+        <ul>
+<% if user_signed_in? %>
+    <li><%= link_to "トップページ", root_path %></li>
+    <li><%= link_to "書き込む", new_route_path %></li>
+    <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></li>
+<% else %>
+    <li>書き込む</li>
+    <li>マイページ</li>
+    <li><%= link_to "サインイン", new_user_session_path %></li>
+<% end %>
+
+</ul>
+</nav>
+</div>
 
 
-<p>検索</p>
+<!-- -------------------------　コンテンツ　------------------------- -->
+<div class="A">
+    <div class="box3">
+      
 <%= form_tag(search_routes_path, :method => 'get') do %>
   <%= text_field_tag :search %>
   <%= submit_tag '検索する', :name => nil %>
 <% end %>
 
-
 <p>［　<%= params[:search] %>　］の検索結果 ： </p>
+
+
+<article class="kiji">
+
 <hr>
 
 <% unless @search_result.nil? %>
@@ -21,4 +53,47 @@
 <% else %>
     <p> ありません。</p>
 <% end %>
+
+
+<!-- ----------　ページネーション　----------- -->
+<div>
+    ページネーション
+</div>
+<hr>
+
+</article>
+    </div>
+
+
+<!-- -------------------------　サイドバー　------------------------- -->
+<div class="box4">
+        
+	<div class="search_box">
+    	<%= form_tag(search_routes_path, method: :get) do %>
+        	<%= text_field_tag :search %>
+        	<%= submit_tag '検索', :name => nil %>
+    	<% end %>	
+	</div>
+	
+	<aside class="sidemenu">
+		<h1>マイページ</h1>
+		<ul>
+		<li><a href="#">わかりやすい地図の読み方</a></li>
+		<li><a href="#">苗から始めるトマト作り</a></li>
+		<li><a href="#">料理とスマホの便利な関係</a></li>
+		<li><a href="#">バッテリーを長持ちさせる技</a></li>
+		</ul>
+		</aside>
+        
+    </div>
+</div>
+
+
+
+
+<!-- -------------------------　ボトム　------------------------- -->
+<div class="box5">
+リンク：<a href="sp1.html">HTMLページへ</a>
+<div>運営：Wordscape</div>
+</div>
 
